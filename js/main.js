@@ -219,7 +219,21 @@ function initContactForm() {
       return;
     }
 
-    // Submit (Netlify handles the actual POST)
+    // Check consent before submitting
+    const consent = document.getElementById("consent");
+    if (consent && !consent.checked) {
+      consent.focus();
+      let err = form.querySelector(".form-error--consent");
+      if (!err) {
+        err = document.createElement("span");
+        err.className = "form-error form-error--consent";
+        err.setAttribute("role", "alert");
+        err.textContent =
+          "Please confirm you consent to your data being stored to respond to your message.";
+        consent.parentNode.parentNode.appendChild(err);
+      }
+      return;
+    }
     form.submit();
   });
 }
@@ -385,20 +399,20 @@ function initContactReasons() {
   /* Consent validation on submit */
   const form = document.getElementById("contactForm");
   if (!form) return;
-  form.addEventListener("submit", function (e) {
-    const consent = document.getElementById("consent");
-    if (consent && !consent.checked) {
-      e.preventDefault();
-      consent.focus();
-      let err = form.querySelector(".form-error--consent");
-      if (!err) {
-        err = document.createElement("span");
-        err.className = "form-error form-error--consent";
-        err.setAttribute("role", "alert");
-        err.textContent =
-          "Please confirm you consent to your data being stored to respond to your message.";
-        consent.parentNode.parentNode.appendChild(err);
-      }
-    }
-  });
+  // form.addEventListener("submit", function (e) {
+  //   const consent = document.getElementById("consent");
+  //   if (consent && !consent.checked) {
+  //     e.preventDefault();
+  //     consent.focus();
+  //     let err = form.querySelector(".form-error--consent");
+  //     if (!err) {
+  //       err = document.createElement("span");
+  //       err.className = "form-error form-error--consent";
+  //       err.setAttribute("role", "alert");
+  //       err.textContent =
+  //         "Please confirm you consent to your data being stored to respond to your message.";
+  //       consent.parentNode.parentNode.appendChild(err);
+  //     }
+  //   }
+  // });
 }
