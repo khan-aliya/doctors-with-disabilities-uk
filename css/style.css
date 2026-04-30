@@ -2653,8 +2653,8 @@ em {
 }
 
 /* Hidden form group - replaces style="display: none" */
-.form-group--hidden {
-  display: none;
+.form-group..form-group--hidden {
+  display: none !important;
 }
 
 /* Honeypot field - hidden from all users */
