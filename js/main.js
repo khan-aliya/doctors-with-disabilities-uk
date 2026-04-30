@@ -234,7 +234,7 @@ function initContactForm() {
       }
       return;
     }
-    form.submit();
+    HTMLFormElement.prototype.submit.call(form);
   });
 }
 /* ── 8. Dropdown nav ── */
