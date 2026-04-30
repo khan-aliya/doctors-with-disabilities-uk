@@ -1,0 +1,23 @@
+# ============================================================
+# Doctors with Disabilities UK
+# robots.txt - Search engine crawling rules
+# ============================================================
+
+User-agent: *
+
+# Allow all core content pages
+Allow: /
+Allow: /rights.html
+Allow: /resources.html
+Allow: /stories.html
+Allow: /stories/
+Allow: /hidden_disability.html
+Allow: /contact.html
+
+# Disallow legal/utility pages from indexing
+Disallow: /privacy.html
+Disallow: /accessibility.html
+Disallow: /404.html
+
+# Sitemap location
+Sitemap: https://www.doctorswithdisabilities.co.uk/sitemap.xml

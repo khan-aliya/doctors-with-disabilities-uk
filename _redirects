@@ -1,0 +1,23 @@
+# ============================================================
+
+# Doctors with Disabilities UK
+
+# \_redirects - Netlify URL redirects
+
+# ============================================================
+
+# Custom 404 - serve our own page for any unmatched URL
+
+/\* /404.html 404
+
+# ── Future redirects go here ──
+
+# If you rename or move a page, add a redirect so old links still work.
+
+# Format: /old-path /new-path 301
+
+#
+
+# Example:
+
+# /about /index.html 301
