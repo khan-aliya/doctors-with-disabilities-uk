@@ -195,7 +195,7 @@ function initContactForm() {
 
     // Required fields
     form.querySelectorAll("[required]").forEach((field) => {
-      if (!field.value.trim()) {
+      if (!field.value.trim() && field.type !== "checkbox") {
         valid = false;
         showFieldError(field, "This field is required");
         errors.push(field);
@@ -214,14 +214,10 @@ function initContactForm() {
       errors.push(emailField);
     }
 
-    if (!valid) {
-      errors[0].focus();
-      return;
-    }
-
-    // Check consent before submitting
+    // Consent checkbox — must be checked
     const consent = document.getElementById("consent");
     if (consent && !consent.checked) {
+      valid = false;
       consent.focus();
       let err = form.querySelector(".form-error--consent");
       if (!err) {
@@ -232,8 +228,14 @@ function initContactForm() {
           "Please confirm you consent to your data being stored to respond to your message.";
         consent.parentNode.parentNode.appendChild(err);
       }
+      errors.push(consent);
+    }
+
+    if (!valid) {
+      if (errors[0]) errors[0].focus();
       return;
     }
+
     HTMLFormElement.prototype.submit.call(form);
   });
 }
