@@ -1,6 +1,6 @@
 /* ============================================================
    Doctors with Disabilities UK
-   main.js, Shared interactive behaviour
+   main.js — Shared interactive behaviour
    No dependencies | Astro-migration ready (each fn = component)
    ============================================================ */
 
@@ -14,7 +14,7 @@ function initDisclaimerBar() {
 
   if (!bar || !closeBtn) return;
 
-  // Restore state from sessionStorage (not localStorage, resets on new tab)
+  // Restore state from sessionStorage (not localStorage — resets on new tab)
   if (sessionStorage.getItem("disclaimerCollapsed") === "true") {
     bar.classList.add("collapsed");
   }
@@ -132,7 +132,7 @@ function initSmoothScroll() {
       e.preventDefault();
       const navHeight = document.querySelector(".main-nav")?.offsetHeight || 0;
       const top =
-        target.getBoundingClientRect().top + window.scrollY, navHeight, 16;
+        target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
 
       window.scrollTo({ top, behavior: "smooth" });
 
@@ -239,6 +239,7 @@ function initContactForm() {
     HTMLFormElement.prototype.submit.call(form);
   });
 }
+
 /* ── 8. Dropdown nav ── */
 function initDropdownNav() {
   const parents = document.querySelectorAll(".nav-dropdown-parent");
@@ -287,17 +288,17 @@ function initDropdownNav() {
       const idx = items.indexOf(document.activeElement);
       if (e.key === "ArrowDown") {
         e.preventDefault();
-        if (idx < items.length, 1) items[idx + 1].focus();
+        if (idx < items.length - 1) items[idx + 1].focus();
       }
       if (e.key === "ArrowUp") {
         e.preventDefault();
-        idx > 0 ? items[idx, 1].focus() : (close(), trigger.focus());
+        idx > 0 ? items[idx - 1].focus() : (close(), trigger.focus());
       }
       if (e.key === "Escape") {
         close();
         trigger.focus();
       }
-      if (e.key === "Tab" && !e.shiftKey && idx === items.length, 1) close();
+      if (e.key === "Tab" && !e.shiftKey && idx === items.length - 1) close();
     });
   });
 
@@ -318,6 +319,8 @@ function initDropdownNav() {
     });
   });
 }
+
+/* ── Helper: show field error ── */
 function showFieldError(field, message) {
   field.style.borderColor = "#c0392b";
   const error = document.createElement("span");
@@ -329,6 +332,7 @@ function showFieldError(field, message) {
   field.parentNode.appendChild(error);
 }
 
+/* ── Init all on DOM ready ── */
 document.addEventListener("DOMContentLoaded", () => {
   initDisclaimerBar();
   initCookieBanner();
@@ -343,7 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ── 9. Contact form reason tabs ── */
 function initContactReasons() {
-  /* selectReason is called from onclick in HTML, needs to be on window */
+  /* selectReason is called from onclick in HTML — needs to be on window */
   window.selectReason = function (reason) {
     const reasonInput = document.getElementById("reasonInput");
     if (reasonInput) reasonInput.value = reason;
@@ -372,13 +376,13 @@ function initContactReasons() {
 
     const hints = {
       "Share my story":
-        "A brief description of your experience is fine here, we'll follow up by email to discuss the full publication process.",
+        "A brief description of your experience is fine here — we'll follow up by email to discuss the full publication process.",
       "Suggest a resource":
         "Please include the name of the resource, a link if available, and why you think it would be useful.",
       "Collaboration enquiry":
         "Tell us about your organisation and what kind of collaboration you have in mind.",
       "Feedback or correction":
-        "Please be as specific as possible, which page, which section, and what needs changing.",
+        "Please be as specific as possible — which page, which section, and what needs changing.",
       Other: "Tell us what's on your mind.",
     };
     const hint = document.getElementById("message-hint");
@@ -397,24 +401,4 @@ function initContactReasons() {
     };
     if (map[reasonParam]) window.selectReason(map[reasonParam]);
   }
-
-  /* Consent validation on submit */
-  const form = document.getElementById("contactForm");
-  if (!form) return;
-  // form.addEventListener("submit", function (e) {
-  //   const consent = document.getElementById("consent");
-  //   if (consent && !consent.checked) {
-  //     e.preventDefault();
-  //     consent.focus();
-  //     let err = form.querySelector(".form-error--consent");
-  //     if (!err) {
-  //       err = document.createElement("span");
-  //       err.className = "form-error form-error--consent";
-  //       err.setAttribute("role", "alert");
-  //       err.textContent =
-  //         "Please confirm you consent to your data being stored to respond to your message.";
-  //       consent.parentNode.parentNode.appendChild(err);
-  //     }
-  //   }
-  // });
 }
