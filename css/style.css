@@ -2159,7 +2159,7 @@ em {
 /* CTA grid - replaces inline style */
 .cta-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: var(--space-12);
   align-items: start;
   max-width: 860px;
