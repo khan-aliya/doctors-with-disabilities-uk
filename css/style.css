@@ -1,6 +1,6 @@
 /* ============================================================
    Doctors with Disabilities UK
-   style.css - Design system & shared components
+   style.css, Design system & shared components
    Forest & Gold palette | WCAG AAA | Astro-migration ready
    ============================================================ */
 
@@ -8,12 +8,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;500;600;700&display=swap");
 
 /* ============================================================
-   1. DESIGN TOKENS - change here, changes everywhere
+   1. DESIGN TOKENS, change here, changes everywhere
    ============================================================ */
 :root {
   /* Plum & Mauve palette */
   --green-900: #1a0a24;
-  --green-800: #3d1f5c; /* primary - nav, card headers, footer */
+  --green-800: #3d1f5c; /* primary, nav, card headers, footer */
   --green-700: #5b2d82; /* hover states, active links */
   --green-600: #7b4ba8; /* icons, section labels */
   --green-500: #9b6ec4; /* lighter accent */
@@ -23,15 +23,15 @@
   --green-50: #f5ecfb; /* card backgrounds */
   --green-20: #faf5fd; /* page section alternates */
 
-  /* Warm amber accent (replaces gold - same variable names, no HTML changes) */
+  /* Warm amber accent (replaces gold, same variable names, no HTML changes) */
   --gold-900: #3d2400;
-  --gold-700: #7a5200; /* amber text on light bg - AAA */
+  --gold-700: #7a5200; /* amber text on light bg, AAA */
   --gold-600: #b5821a; /* underlines, highlights */
   --gold-400: #d4a84a; /* borders */
   --gold-100: #f5e8c8; /* tint backgrounds */
   --gold-50: #fbf5e6; /* disclaimer bar bg */
 
-  /* Neutrals - plum-tinted */
+  /* Neutrals, plum-tinted */
   --neutral-900: #1e1025;
   --neutral-700: #3d2650;
   --neutral-500: #6b4d80;
@@ -47,7 +47,7 @@
   --bg-section: #f3edf8;
   --bg-hero: #f2eaf8;
 
-  /* Text - WCAG verified */
+  /* Text, WCAG verified */
   --text-primary: #2a1a2e; /* 14.1:1 on --bg-hero ✅ AAA */
   --text-secondary: #4a2d5a; /* 9.1:1 on --bg-hero  ✅ AAA */
   --text-muted: #6b4880; /* 5.9:1 on white      ✅ AA normal / AAA large */
@@ -59,7 +59,7 @@
   --border-mid: rgba(91, 45, 130, 0.24);
   --border-strong: rgba(61, 31, 92, 0.4);
 
-  /* Shadows - plum-tinted */
+  /* Shadows, plum-tinted */
   --shadow-sm: 0 1px 4px rgba(61, 31, 92, 0.07);
   --shadow-md: 0 4px 16px rgba(61, 31, 92, 0.09);
   --shadow-lg: 0 8px 32px rgba(61, 31, 92, 0.11);
@@ -155,7 +155,7 @@ button {
   cursor: pointer;
 }
 
-/* Skip to main - accessibility */
+/* Skip to main, accessibility */
 .skip-link {
   position: absolute;
   top: -100px;
@@ -253,7 +253,7 @@ em {
   font-style: italic;
 }
 
-/* Inline gold underline accent - used on key phrases */
+/* Inline gold underline accent, used on key phrases */
 .accent-underline {
   border-bottom: 2.5px solid var(--gold-600);
   padding-bottom: 1px;
@@ -743,7 +743,7 @@ em {
   fill: var(--green-400);
 }
 /* ============================================================
-   10. INTRO STRIP - "Are you disabled?"
+   10. INTRO STRIP, "Are you disabled?"
    ============================================================ */
 .intro-strip {
   background: var(--bg-white);
@@ -1268,7 +1268,7 @@ em {
 }
 
 /* ============================================================
-   19. RESPONSIVE - MOBILE FIRST
+   19. RESPONSIVE, MOBILE FIRST
    Base styles = mobile (320px+)
    sm  = 480px+
    md  = 680px+
@@ -1478,12 +1478,12 @@ em {
     text-align: left;
   }
 }
-/* Resource rows - slightly more padding on larger screens */
+/* Resource rows, slightly more padding on larger screens */
 .resource-row {
   padding: var(--space-5) var(--space-6);
 }
 
-/* Resource list - more breathing room between rows */
+/* Resource list, more breathing room between rows */
 .resource-list {
   gap: var(--space-4);
 }
@@ -1492,7 +1492,7 @@ em {
 .content-section__body {
   max-width: 66ch;
 }
-/* Callout - constrain width to match prose */
+/* Callout, constrain width to match prose */
 .callout {
   max-width: 66ch;
 }
@@ -1575,7 +1575,7 @@ em {
    21. INNER PAGE SHARED COMPONENTS
    ============================================================ */
 
-/* Page hero - lighter than homepage hero, used on all inner pages */
+/* Page hero, lighter than homepage hero, used on all inner pages */
 .page-hero {
   background: var(--bg-hero);
   border-bottom: 1px solid var(--border-light);
@@ -1657,7 +1657,7 @@ em {
   max-width: 58ch;
 }
 
-/* Content body - prose sections */
+/* Content body, prose sections */
 .content-body {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -1702,7 +1702,7 @@ em {
   font-weight: 700;
 }
 
-/* Step list - numbered process steps */
+/* Step list, numbered process steps */
 .step-list {
   display: flex;
   flex-direction: column;
@@ -1794,7 +1794,7 @@ em {
   font-weight: 600;
 }
 
-/* Resource link row - for listing external links */
+/* Resource link row, for listing external links */
 .resource-list {
   display: flex;
   flex-direction: column;
@@ -1880,7 +1880,7 @@ em {
   color: var(--green-700);
 }
 
-/* Video embed container - 16:9 responsive */
+/* Video embed container, 16:9 responsive */
 .video-embed {
   position: relative;
   padding-bottom: 56.25%;
@@ -1922,7 +1922,7 @@ em {
   position: relative;
 }
 
-/* Trigger button - matches existing nav link style */
+/* Trigger button, matches existing nav link style */
 .nav-dropdown-trigger {
   display: inline-flex;
   align-items: center;
@@ -1962,7 +1962,7 @@ em {
   transform: rotate(180deg);
 }
 
-/* Dropdown panel - hidden by default */
+/* Dropdown panel, hidden by default */
 .nav-dropdown {
   display: none;
   position: absolute;
@@ -1982,7 +1982,7 @@ em {
   display: block;
 }
 
-/* Individual dropdown links - simple, no description line */
+/* Individual dropdown links, simple, no description line */
 .nav-dropdown__link {
   display: block;
   padding: var(--space-3) var(--space-5);
@@ -2007,7 +2007,7 @@ em {
   border-radius: var(--radius-sm);
 }
 
-/* Divider between items - optional, remove if you prefer clean */
+/* Divider between items, optional, remove if you prefer clean */
 .nav-dropdown li + li .nav-dropdown__link {
   border-top: 1px solid var(--border-light);
 }
@@ -2035,7 +2035,7 @@ em {
 }
 /* ══ NEW: index.html additions ══ */
 
-/* Site header - sticky wrapper for nav */
+/* Site header, sticky wrapper for nav */
 .site-header {
   position: sticky;
   top: 0;
@@ -2073,7 +2073,7 @@ em {
   border: none;
 }
 
-/* Card icon tinted variant - replaces style="background: var(--green-100)" */
+/* Card icon tinted variant, replaces style="background: var(--green-100)" */
 .card__icon--tint {
   background: var(--green-100);
 }
@@ -2093,7 +2093,7 @@ em {
   transform: translateY(-2px);
 }
 
-/* Invite card responsive - 680px+ */
+/* Invite card responsive, 680px+ */
 @media (min-width: 680px) {
   .card--invite {
     justify-content: flex-start;
@@ -2112,7 +2112,7 @@ em {
   }
 }
 
-/* Hidden disability section - replaces inline paragraph styles */
+/* Hidden disability section, replaces inline paragraph styles */
 .hidden-disability__body {
   font-size: 0.95rem;
   color: var(--text-muted);
@@ -2121,7 +2121,7 @@ em {
   max-width: 52ch;
 }
 
-/* Hidden disability cards column - replaces inline div styles */
+/* Hidden disability cards column, replaces inline div styles */
 .hidden-disability__cards {
   display: flex;
   flex-direction: column;
@@ -2129,7 +2129,7 @@ em {
   margin-top: var(--space-8);
 }
 
-/* Card sub-headings - replaces inline h4 styles */
+/* Card sub-headings, replaces inline h4 styles */
 .card__subheading {
   font-size: 1.05rem;
   margin-bottom: var(--space-2);
@@ -2139,7 +2139,7 @@ em {
   color: var(--gold-700);
 }
 
-/* Card detail text - replaces inline p styles */
+/* Card detail text, replaces inline p styles */
 .card__detail {
   font-size: 0.85rem;
   color: var(--text-muted);
@@ -2151,12 +2151,12 @@ em {
   color: var(--text-secondary);
 }
 
-/* Small text link variant - replaces style="font-size: 0.84rem" */
+/* Small text link variant, replaces style="font-size: 0.84rem" */
 .text-link--sm {
   font-size: 0.84rem;
 }
 
-/* CTA grid - replaces inline style */
+/* CTA grid, replaces inline style */
 .cta-grid {
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -2166,7 +2166,7 @@ em {
   margin: 0 auto;
 }
 
-/* Get involved body text - replaces inline p style */
+/* Get involved body text, replaces inline p style */
 .get-involved__body {
   font-size: 0.95rem;
   color: var(--text-muted);
@@ -2219,7 +2219,7 @@ em {
 
 /* ══ NEW: stories.html additions ══ */
 
-/* Content body with top/bottom padding - replaces inline padding style */
+/* Content body with top/bottom padding, replaces inline padding style */
 .content-body--padded {
   padding-top: var(--space-10);
   padding-bottom: var(--space-16);
@@ -2245,7 +2245,7 @@ em {
   margin-top: var(--space-10);
 }
 
-/* More stories heading - replaces inline h2 styles */
+/* More stories heading, replaces inline h2 styles */
 .more-stories__heading {
   font-family: var(--font-serif);
   font-size: clamp(1.3rem, 2.5vw, 1.7rem);
@@ -2255,7 +2255,7 @@ em {
   margin-bottom: var(--space-4);
 }
 
-/* More stories intro paragraph - replaces inline p styles */
+/* More stories intro paragraph, replaces inline p styles */
 .more-stories__intro {
   font-size: 0.95rem;
   color: var(--text-muted);
@@ -2314,7 +2314,7 @@ em {
   flex-wrap: wrap;
 }
 
-/* Tags row in featured story - replaces inline div styles */
+/* Tags row in featured story, replaces inline div styles */
 .story-featured__tags {
   margin-left: auto;
   display: flex;
@@ -2388,7 +2388,7 @@ em {
   }
 }
 
-/* Placeholder story cards - replaces all inline opacity/colour styles */
+/* Placeholder story cards, replaces all inline opacity/colour styles */
 .story-card--placeholder {
   opacity: 0.5;
 }
@@ -2521,12 +2521,12 @@ em {
   }
 }
 
-/* Ways section spacing - replaces inline section style */
+/* Ways section spacing, replaces inline section style */
 .ways-section {
   margin-bottom: var(--space-8);
 }
 
-/* Ways heading - replaces inline h2 styles */
+/* Ways heading, replaces inline h2 styles */
 .ways-heading {
   font-family: var(--font-serif);
   font-size: 1.1rem;
@@ -2641,23 +2641,23 @@ em {
   border-color: var(--green-800);
 }
 
-/* Form required asterisk - replaces inline span styles */
+/* Form required asterisk, replaces inline span styles */
 .form-required {
   color: var(--green-600);
 }
 
-/* Form optional label text - replaces inline span styles */
+/* Form optional label text, replaces inline span styles */
 .form-optional {
   color: var(--text-muted);
   font-weight: 400;
 }
 
-/* Hidden form group - replaces style="display: none" */
+/* Hidden form group, replaces style="display: none" */
 .form-group.form-group--hidden {
   display: none !important;
 }
 
-/* Honeypot field - hidden from all users */
+/* Honeypot field, hidden from all users */
 .honeypot-field {
   display: none !important;
 }
@@ -2805,7 +2805,7 @@ em {
 
 /* ══ NEW: hidden_disability.html additions ══ */
 
-/* Conditions grid - mobile first */
+/* Conditions grid, mobile first */
 .conditions-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -2854,7 +2854,7 @@ em {
   flex-shrink: 0;
 }
 
-/* Stats strip - mobile first */
+/* Stats strip, mobile first */
 .stats-strip {
   display: grid;
   grid-template-columns: 1fr;
@@ -2907,7 +2907,7 @@ em {
   line-height: 1.4;
 }
 
-/* Lanyard card - mobile first */
+/* Lanyard card, mobile first */
 .lanyard-card {
   background: var(--bg-white);
   border: 1.5px solid var(--green-200);
@@ -3007,7 +3007,7 @@ em {
   font-weight: 600;
 }
 
-/* Colleagues grid - mobile first */
+/* Colleagues grid, mobile first */
 .colleagues-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -3107,7 +3107,7 @@ em {
 
 /* ══ NEW: workplace.html additions ══ */
 
-/* Content section subheading - replaces all inline h3 styles */
+/* Content section subheading, replaces all inline h3 styles */
 .content-section__subheading {
   font-family: var(--font-serif);
   font-size: 1.05rem;
@@ -3117,7 +3117,7 @@ em {
   line-height: 1.35;
 }
 
-/* Content section body with bottom spacing - replaces inline margin-bottom */
+/* Content section body with bottom spacing, replaces inline margin-bottom */
 .content-section__body--spaced {
   margin-bottom: var(--space-5);
 }
@@ -3126,7 +3126,7 @@ em {
 
 /* ══ NEW: training.html additions ══ */
 
-/* Tight grid variant - replaces style="gap: var(--space-3)" */
+/* Tight grid variant, replaces style="gap: var(--space-3)" */
 .grid-2--tight {
   gap: var(--space-3);
 }
@@ -3135,12 +3135,12 @@ em {
 
 /* ══ NEW: adjustments.html additions ══ */
 
-/* Compact card - replaces style="padding: var(--space-4)" */
+/* Compact card, replaces style="padding: var(--space-4)" */
 .card--compact {
   padding: var(--space-4);
 }
 
-/* Card label - replaces inline h4 styles */
+/* Card label, replaces inline h4 styles */
 .card__label {
   font-size: 0.82rem;
   font-weight: 700;
@@ -3149,7 +3149,7 @@ em {
   font-family: var(--font-sans);
 }
 
-/* Grid with bottom margin - replaces style="margin-bottom: var(--space-6)" */
+/* Grid with bottom margin, replaces style="margin-bottom: var(--space-6)" */
 .grid-2--mb {
   margin-bottom: var(--space-6);
 }
@@ -3158,7 +3158,7 @@ em {
 
 /* ══ NEW: sick-leave.html additions ══ */
 
-/* Grid with vertical margin - replaces style="margin: var(--space-5) 0" */
+/* Grid with vertical margin, replaces style="margin: var(--space-5) 0" */
 .grid-2--mv {
   margin: var(--space-5) 0;
 }
@@ -3167,7 +3167,7 @@ em {
 
 /* ══ NEW: privacy.html additions ══ */
 
-/* Legal body - prose container */
+/* Legal body, prose container */
 .legal-body {
   max-width: 72ch;
 }

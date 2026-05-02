@@ -1,12 +1,12 @@
 # ============================================================
 # Doctors with Disabilities UK
-# netlify.toml - Netlify deploy configuration
+# netlify.toml, Netlify deploy configuration
 # ============================================================
 
 # ── Build settings ──
 [build]
-  publish = "."          # Root folder - all HTML files at root
-  command = ""           # No build step - plain static site
+  publish = "."          # Root folder, all HTML files at root
+  command = ""           # No build step, plain static site
 
 # ── Redirects & error pages ──
 [[redirects]]
@@ -28,20 +28,20 @@
     # Enable strict HTTPS
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 
-    # Referrer policy - don't leak the URL when clicking outbound links
+    # Referrer policy, don't leak the URL when clicking outbound links
     Referrer-Policy = "strict-origin-when-cross-origin"
 
-    # Permissions policy - disable features we don't use
+    # Permissions policy, disable features we don't use
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
 
     # Content Security Policy
-    # - default-src: only this origin
-    # - script-src: this origin only (no inline scripts after deploy)
-    # - style-src: this origin + Google Fonts
-    # - font-src: Google Fonts
-    # - img-src: this origin + data URIs (for favicon)
-    # - frame-src: YouTube only (for BMA video embed)
-    # - connect-src: this origin + Netlify forms endpoint
+    #, default-src: only this origin
+    #, script-src: this origin only (no inline scripts after deploy)
+    #, style-src: this origin + Google Fonts
+    #, font-src: Google Fonts
+    #, img-src: this origin + data URIs (for favicon)
+    #, frame-src: YouTube only (for BMA video embed)
+    #, connect-src: this origin + Netlify forms endpoint
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; frame-src https://www.youtube.com; connect-src 'self' https://api.netlify.com; base-uri 'self'; form-action 'self'"
 
 # ── Cache headers for static assets ──
@@ -68,7 +68,7 @@
 
 # ── Netlify Forms spam filtering ──
 # (Forms are detected automatically from data-netlify="true" attributes)
-# No additional config needed - Netlify handles spam filtering by default.
+# No additional config needed, Netlify handles spam filtering by default.
 
 # ── Form notifications ──
 # To receive email notifications when the contact form is submitted:

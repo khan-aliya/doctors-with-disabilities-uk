@@ -2,11 +2,11 @@
 
 # Doctors with Disabilities UK
 
-# \_redirects - Netlify URL redirects
+# \_redirects, Netlify URL redirects
 
 # ============================================================
 
-# Custom 404 - serve our own page for any unmatched URL
+# Custom 404, serve our own page for any unmatched URL
 
 /\* /404.html 404
 
