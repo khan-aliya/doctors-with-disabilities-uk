@@ -1408,7 +1408,9 @@ em {
     padding: var(--space-16) var(--space-8);
     gap: var(--space-8);
   }
-
+  .story-invite {
+    height: 100%;
+  }
   /* Cookie banner row */
   .cookie-banner {
     padding: var(--space-5) var(--space-8);
@@ -1491,6 +1493,9 @@ em {
 /* Sub-headings inside content sections */
 .content-section__body {
   max-width: 66ch;
+}
+.hidden-disability_desc {
+  text-align: left;
 }
 /* Callout, constrain width to match prose */
 .callout {
@@ -2230,7 +2235,7 @@ em {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-8);
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-6);
 }
 
 @media (min-width: 680px) {
@@ -2242,7 +2247,7 @@ em {
 
 /* More stories section spacing */
 .more-stories {
-  margin-top: var(--space-10);
+  margin-top: var(--space-8);
 }
 
 /* More stories heading, replaces inline h2 styles */
@@ -2406,7 +2411,11 @@ em {
 .story-card__title--muted {
   color: var(--text-muted);
 }
-
+/* Single card in grid — don't stretch full width */
+.stories-grid:has(> article:only-child) {
+  grid-template-columns: 1fr;
+  max-width: 360px;
+}
 /* Consent notice */
 .consent-notice {
   background: var(--gold-50);
@@ -2441,7 +2450,7 @@ em {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  height: 100%;
+  height: auto;
 }
 
 .story-invite__icon {
