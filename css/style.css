@@ -1408,6 +1408,30 @@ em {
     padding: var(--space-16) var(--space-8);
     gap: var(--space-8);
   }
+  .stories-section-layout {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+  .stories-section-layout .stories-intro-grid {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  /* Div 2 (invite card) — spans right column, row 1 */
+  .stories-section-layout .stories-intro-grid > div:last-child {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  /* Div 3 — spans full width, row 2 */
+  .stories-section-layout .stories-grid {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
   .story-invite {
     height: 100%;
   }
@@ -2229,7 +2253,12 @@ em {
   padding-top: var(--space-10);
   padding-bottom: var(--space-16);
 }
-
+.stories-section-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  margin-bottom: var(--space-10);
+}
 /* Stories intro grid */
 .stories-intro-grid {
   display: grid;
