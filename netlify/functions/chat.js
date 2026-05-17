@@ -11,7 +11,11 @@ exports.handler = async function (event) {
   try {
     const body = JSON.parse(event.body);
     userMessage = body.message;
-    if (!userMessage || typeof userMessage !== "string" || userMessage.trim().length === 0) {
+    if (
+      !userMessage ||
+      typeof userMessage !== "string" ||
+      userMessage.trim().length === 0
+    ) {
       return { statusCode: 400, body: "Message required" };
     }
     if (userMessage.length > 2000) {
@@ -121,7 +125,7 @@ THINGS YOU MUST NEVER DO:
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
+        model: "claude-sonnet-4-6",
         max_tokens: 600,
         system: SYSTEM_PROMPT,
         messages: [{ role: "user", content: userMessage.trim() }],
@@ -132,12 +136,17 @@ THINGS YOU MUST NEVER DO:
       console.error("Anthropic API error:", response.status);
       return {
         statusCode: 502,
-        body: JSON.stringify({ error: "Could not reach the advisor right now. Please try again in a moment." }),
+        body: JSON.stringify({
+          error:
+            "Could not reach the advisor right now. Please try again in a moment.",
+        }),
       };
     }
 
     const data = await response.json();
-    const reply = data.content?.[0]?.text || "Sorry, I could not generate a response. Please try again.";
+    const reply =
+      data.content?.[0]?.text ||
+      "Sorry, I could not generate a response. Please try again.";
 
     return {
       statusCode: 200,
@@ -148,7 +157,9 @@ THINGS YOU MUST NEVER DO:
     console.error("Function error:", err);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Something went wrong. Please try again." }),
+      body: JSON.stringify({
+        error: "Something went wrong. Please try again.",
+      }),
     };
   }
 };
