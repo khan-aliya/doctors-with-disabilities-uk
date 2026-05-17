@@ -64,7 +64,7 @@
     "@media (max-width: 480px) {",
     "  #dwd-chat-panel { right: 12px; bottom: 80px; width: calc(100vw - 24px); max-height: 70vh; }",
     "  #dwd-chat-trigger { right: 12px; bottom: 16px; }",
-    "}"
+    "}",
   ].join("\n");
   document.head.appendChild(style);
 
@@ -73,14 +73,16 @@
   trigger.setAttribute("aria-label", "Open rights advisor chat");
   trigger.setAttribute("aria-expanded", "false");
   trigger.setAttribute("aria-controls", "dwd-chat-panel");
-  trigger.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="1.8"/><path d="M12 8V12M12 16H12.01" stroke="white" stroke-width="2" stroke-linecap="round"/></svg> Ask about your rights';
+  trigger.innerHTML =
+    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="1.8"/><path d="M12 8V12M12 16H12.01" stroke="white" stroke-width="2" stroke-linecap="round"/></svg> Ask about your rights';
 
   var panel = document.createElement("div");
   panel.id = "dwd-chat-panel";
   panel.setAttribute("role", "dialog");
   panel.setAttribute("aria-modal", "false");
   panel.setAttribute("aria-label", "Rights advisor");
-  panel.innerHTML = '<div class="dwd-chat-header"><div class="dwd-chat-header-text"><h3>Rights Advisor</h3><p>Peer guidance — not legal advice</p></div><button class="dwd-chat-close" aria-label="Close chat" id="dwd-chat-close">&#x2715;</button></div><div class="dwd-chat-disclaimer"><strong>Guidance only.</strong> For your individual circumstances, always consult the BMA or a qualified solicitor.</div><div class="dwd-chat-messages" id="dwd-chat-messages" role="log" aria-live="polite" aria-label="Chat messages"></div><div class="dwd-chat-input-area"><textarea class="dwd-chat-input" id="dwd-chat-input" placeholder="Describe your situation..." rows="1" aria-label="Your message" maxlength="2000"></textarea><button class="dwd-chat-send" id="dwd-chat-send" aria-label="Send message"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>';
+  panel.innerHTML =
+    '<div class="dwd-chat-header"><div class="dwd-chat-header-text"><h3>Rights Advisor</h3><p>Peer guidance — not legal advice</p></div><button class="dwd-chat-close" aria-label="Close chat" id="dwd-chat-close">&#x2715;</button></div><div class="dwd-chat-disclaimer"><strong>Guidance only.</strong> For your individual circumstances, always consult the BMA or a qualified solicitor.</div><div class="dwd-chat-messages" id="dwd-chat-messages" role="log" aria-live="polite" aria-label="Chat messages"></div><div class="dwd-chat-input-area"><textarea class="dwd-chat-input" id="dwd-chat-input" placeholder="Describe your situation..." rows="1" aria-label="Your message" maxlength="2000"></textarea><button class="dwd-chat-send" id="dwd-chat-send" aria-label="Send message"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>';
 
   document.body.appendChild(trigger);
   document.body.appendChild(panel);
@@ -90,7 +92,7 @@
     "My employer keeps ignoring my adjustment request",
     "Can I be put on capability for disability-related sick leave?",
     "I don't know if I should disclose my condition",
-    "What should I do if my trust refuses my request?"
+    "What should I do if my trust refuses my request?",
   ];
 
   var isOpen = false;
@@ -112,6 +114,21 @@
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (match, label, url) {
+        var href = url.startsWith("http") ? url : "/" + url;
+        var target = url.startsWith("http")
+          ? ' target="_blank" rel="noopener noreferrer"'
+          : "";
+        return (
+          '<a href="' +
+          href +
+          '"' +
+          target +
+          ' style="color:#5b2d82;font-weight:600;">' +
+          label +
+          "</a>"
+        );
+      })
       .replace(/\n\n/g, "<br><br>")
       .replace(/\n/g, "<br>");
     msg.appendChild(bubble);
@@ -124,7 +141,8 @@
     var msg = document.createElement("div");
     msg.className = "dwd-msg dwd-msg--assistant";
     msg.id = "dwd-typing";
-    msg.innerHTML = '<div class="dwd-typing" aria-label="Advisor is thinking"><span></span><span></span><span></span></div>';
+    msg.innerHTML =
+      '<div class="dwd-typing" aria-label="Advisor is thinking"><span></span><span></span><span></span></div>';
     messagesEl.appendChild(msg);
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
@@ -137,7 +155,10 @@
   function showWelcome() {
     if (hasStarted) return;
     hasStarted = true;
-    addMessage("Hello — I am here to help you understand your rights as a disabled doctor in the UK.\n\nDescribe your situation or pick a question below and I will point you to what is relevant.", "assistant");
+    addMessage(
+      "Hello — I am here to help you understand your rights as a disabled doctor in the UK.\n\nDescribe your situation or pick a question below and I will point you to what is relevant.",
+      "assistant",
+    );
     var suggestionsEl = document.createElement("div");
     suggestionsEl.className = "dwd-msg dwd-msg--assistant";
     var inner = document.createElement("div");
@@ -147,7 +168,8 @@
       btn.className = "dwd-suggestion-btn";
       btn.textContent = q;
       btn.addEventListener("click", function () {
-        if (suggestionsEl.parentNode) suggestionsEl.parentNode.removeChild(suggestionsEl);
+        if (suggestionsEl.parentNode)
+          suggestionsEl.parentNode.removeChild(suggestionsEl);
         sendMessage(q);
       });
       inner.appendChild(btn);
@@ -169,28 +191,40 @@
     fetch("/.netlify/functions/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: trimmed })
+      body: JSON.stringify({ message: trimmed }),
     })
-    .then(function (res) {
-      removeTypingIndicator();
-      if (!res.ok) {
-        return res.json().catch(function () { return {}; }).then(function (err) {
-          addMessage(err.error || "Sorry, something went wrong. Please try again in a moment.", "error");
+      .then(function (res) {
+        removeTypingIndicator();
+        if (!res.ok) {
+          return res
+            .json()
+            .catch(function () {
+              return {};
+            })
+            .then(function (err) {
+              addMessage(
+                err.error ||
+                  "Sorry, something went wrong. Please try again in a moment.",
+                "error",
+              );
+            });
+        }
+        return res.json().then(function (data) {
+          addMessage(data.reply, "assistant");
         });
-      }
-      return res.json().then(function (data) {
-        addMessage(data.reply, "assistant");
+      })
+      .catch(function () {
+        removeTypingIndicator();
+        addMessage(
+          "I could not connect right now. Please check your connection and try again.",
+          "error",
+        );
+      })
+      .finally(function () {
+        isLoading = false;
+        sendBtn.disabled = false;
+        inputEl.focus();
       });
-    })
-    .catch(function () {
-      removeTypingIndicator();
-      addMessage("I could not connect right now. Please check your connection and try again.", "error");
-    })
-    .finally(function () {
-      isLoading = false;
-      sendBtn.disabled = false;
-      inputEl.focus();
-    });
   }
 
   function openPanel() {
@@ -198,7 +232,9 @@
     panel.classList.add("is-open");
     trigger.setAttribute("aria-expanded", "true");
     showWelcome();
-    setTimeout(function () { inputEl.focus(); }, 250);
+    setTimeout(function () {
+      inputEl.focus();
+    }, 250);
   }
 
   function closePanel() {
@@ -208,7 +244,9 @@
     trigger.focus();
   }
 
-  trigger.addEventListener("click", function () { isOpen ? closePanel() : openPanel(); });
+  trigger.addEventListener("click", function () {
+    isOpen ? closePanel() : openPanel();
+  });
   closeBtn.addEventListener("click", closePanel);
 
   document.addEventListener("keydown", function (e) {
@@ -222,10 +260,29 @@
     }
   });
 
-  sendBtn.addEventListener("click", function () { sendMessage(); });
+  sendBtn.addEventListener("click", function () {
+    sendMessage();
+  });
 
   inputEl.addEventListener("input", function () {
     inputEl.style.height = "auto";
     inputEl.style.height = Math.min(inputEl.scrollHeight, 100) + "px";
   });
+
+  // Keep chat trigger above cookie banner when banner is visible
+  function adjustTriggerForBanner() {
+    var banner = document.getElementById("cookieBanner");
+    if (!banner) return;
+    function update() {
+      if (banner.classList.contains("hidden")) {
+        trigger.style.bottom = "28px";
+      } else {
+        trigger.style.bottom = banner.offsetHeight + 12 + "px";
+      }
+    }
+    update();
+    var observer = new MutationObserver(update);
+    observer.observe(banner, { attributes: true, attributeFilter: ["class"] });
+  }
+  adjustTriggerForBanner();
 })();
