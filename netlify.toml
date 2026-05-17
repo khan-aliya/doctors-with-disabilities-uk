@@ -8,6 +8,10 @@
   publish = "."          # Root folder, all HTML files at root
   command = ""           # No build step, plain static site
 
+# ── Function settings ──
+[functions]
+  directory = "netlify/functions"
+
 # ── Redirects & error pages ──
 [[redirects]]
   from   = "/404"
@@ -42,7 +46,7 @@
     #, img-src: this origin + data URIs (for favicon)
     #, frame-src: YouTube only (for BMA video embed)
     #, connect-src: this origin + Netlify forms endpoint
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; frame-src https://www.youtube.com; connect-src 'self' https://api.netlify.com; base-uri 'self'; form-action 'self'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; frame-src https://www.youtube.com; connect-src 'self' https://api.netlify.com https://api.anthropic.com; base-uri 'self'; form-action 'self'"
 
 # ── Cache headers for static assets ──
 [[headers]]
