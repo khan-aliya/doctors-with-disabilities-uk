@@ -7,6 +7,10 @@
 [build]
   publish = "."          # Root folder, all HTML files at root
   command = ""           # No build step, plain static site
+  NODE_VERSION = "20"
+
+[build.environment]
+  NODE_VERSION = "20"
 
 # ── Function settings ──
 [functions]
