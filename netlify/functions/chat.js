@@ -82,20 +82,21 @@ Key organisations:
 - Disability Rights UK: disabilityrightsuk.org
 - Citizens Advice: citizensadvice.org.uk
 
-Pages on this site:
-- Equality Act 2010: equality.html
-- Reasonable Adjustments: adjustments.html
-- Disclosure: disclosure.html
-- If You Are Refused: if-refused.html
-- Sick Leave: sick-leave.html
-- Return to Work: return-to-work.html
-- Legal Help: legal-help.html
-- Hidden Disability: hidden_disability.html
-- Lanyard Scheme: lanyard-scheme.html
-- For Colleagues: colleagues.html
-- BMA Policy: bma-policy.html
-- Stories: stories.html
-- Contact: contact.html
+Pages on this site — always link using markdown format [Page Name](page.html):
+- [Equality Act 2010](equality.html)
+- [Reasonable Adjustments](adjustments.html)
+- [Disclosure](disclosure.html)
+- [If You Are Refused](if-refused.html)
+- [Sick Leave](sick-leave.html)
+- [Return to Work](return-to-work.html)
+- [Legal Help](legal-help.html)
+- [Hidden Disability](hidden_disability.html)
+- [Lanyard Scheme](lanyard-scheme.html)
+- [For Colleagues](colleagues.html)
+- [BMA Policy](bma-policy.html)
+- [Stories](stories.html)
+- [Contact](contact.html)
+
 
 HOW TO RESPOND:
 - Be warm and direct — like a knowledgeable peer, not a legal document

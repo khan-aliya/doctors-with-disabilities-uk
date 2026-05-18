@@ -4,7 +4,7 @@
   var style = document.createElement("style");
   style.textContent = [
     "#dwd-chat-trigger {",
-    "  position: fixed; bottom: 28px; right: 28px; z-index: 1000;",
+    "  position: fixed; bottom: 100px; right: 28px; z-index: 1000;",
     "  background: #3d1f5c; color: white; border: none; border-radius: 999px;",
     "  padding: 0.75rem 1.25rem 0.75rem 1rem;",
     "  font-family: 'Nunito', sans-serif; font-size: 0.88rem; font-weight: 700;",
@@ -15,7 +15,7 @@
     "#dwd-chat-trigger:hover { background: #5b2d82; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(61,31,92,0.45); }",
     "#dwd-chat-trigger:focus-visible { outline: 2.5px solid #b5821a; outline-offset: 3px; }",
     "#dwd-chat-panel {",
-    "  position: fixed; bottom: 90px; right: 28px; z-index: 1000;",
+    "  position: fixed; bottom: 162px; right: 28px; z-index: 1000;",
     "  width: 380px; max-width: calc(100vw - 40px); max-height: 560px;",
     "  background: #ffffff; border-radius: 16px;",
     "  border: 1px solid rgba(91,45,130,0.15);",
@@ -269,20 +269,26 @@
     inputEl.style.height = Math.min(inputEl.scrollHeight, 100) + "px";
   });
 
-  // Keep chat trigger above cookie banner when banner is visible
   function adjustTriggerForBanner() {
     var banner = document.getElementById("cookieBanner");
     if (!banner) return;
     function update() {
       if (banner.classList.contains("hidden")) {
         trigger.style.bottom = "28px";
+        panel.style.bottom = "90px";
       } else {
-        trigger.style.bottom = banner.offsetHeight + 12 + "px";
+        var h = banner.offsetHeight;
+        trigger.style.bottom = h + 12 + "px";
+        panel.style.bottom = h + 74 + "px";
       }
     }
+    // Run immediately and after a short delay to catch late renders
     update();
+    setTimeout(update, 300);
+    setTimeout(update, 800);
     var observer = new MutationObserver(update);
     observer.observe(banner, { attributes: true, attributeFilter: ["class"] });
+    window.addEventListener("resize", update);
   }
   adjustTriggerForBanner();
 })();
