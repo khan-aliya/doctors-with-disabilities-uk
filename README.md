@@ -10,7 +10,7 @@ A peer-built resource for disabled doctors across the UK — providing rights gu
 
 Conceived and led by **Dr Syed Masihuddin** (GP Trainee, Shropshire / West Midlands), designed and built by **Aliya Khan**.
 
-Syed was diagnosed with epilepsy during his GP training and found there was no peer-written resource to help disabled doctors understand their rights and navigate the NHS system. This site is the resource he needed and could not find.
+Syed has epilepsy and found there was no peer-written resource to help disabled doctors understand their rights and navigate the NHS system. This site is the resource he needed and could not find.
 
 The site covers:
 
